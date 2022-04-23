@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="corpo-imc.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="styleform.css">
+    <title>Indice de Massa Corporal</title>
+    
+    <script>
+        function  calcular() {
+            var formulario = document.getElementById ("formulario")
+
+            var kilos = +formulario.kilos.value;
+            var metros = +formulario.metros.value
+            var centimetros = +formulario.centimetros.value
+            var altura = (metros * 100 + centimetros) / 100
+
+            var imc =  kilos / (altura * altura)
+            formulario.imc.value = imc.toFixed (2);
+
+            if (imc < 20) {
+                alert ("Abaixo do Peso")
+            }
+            else if (imc > 20 && imc <= 25){
+                alert ("Peso ideal")
+            } 
+            else if (imc > 25 && imc <= 30){
+                alert ("Sobrepeso ")
+            }
+            else if (imc > 30 && imc <= 35){
+                alert ("Obesidade Moderada")
+            }
+            else if (imc > 35 && imc <= 40){
+                alert ("Obesidade Severa")
+            }
+            else if (imc > 40 && imc <= 50){
+                alert ("Obesidade Mórbida")
+            }
+            else {
+                alert ("Informaçoes insuficientes")
+            }
+        }
+    </script>
+
+<body>
+    
+    <form id = "formulario" autocomplete="off">
+        <fieldset>
+            
+            <legend>
+                Cálculo IMC
+            </legend>
+            
+            <br><br>  
+            
+            <label for="Nome">
+                Nome Completo</label>
+            <input name="Nome" type="text" placeholder="Seu nome aqui">
+
+            <br><br>  
+
+            <label for="nascimento">
+                Data de nascimento
+            </label>
+            <input name="nascimento" type="date">
+
+            <br><br>  
+            
+            <label for="kilos">
+                Kilos   
+            </label>
+            <input name="kilos" type="text" required >
+
+            <br><br>
+
+            <label for="metros">
+                Metros
+            </label>
+            <input name="metros" type="text" required >
+
+            <br><br>
+
+           <label for="centimetros">
+               Centímetros
+           </label>
+           <input name="centimetros" type="text" required >
+
+           <br><br>
+
+           <label for="imc">
+               Seu IMC é:
+           </label>
+           <input name="imc" type="text" disabled="disabled">
+           
+           <br><br>
+
+           <a href="#" onclick="calcular()"> Calcular </a>
+
+           <br><br>
+
+           <input type="submit" onclick="calcular()">
+
+           <br><br>
+
+           <input type="reset">
+                 
+        </fieldset>
+    </form>
+
+</body>
+</html>
